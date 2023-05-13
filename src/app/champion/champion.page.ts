@@ -33,7 +33,6 @@ export class ChampionPage implements OnInit {
         this.dataDragonService.getChampionDetailByName(version, this.championName!).subscribe(champion => {
           this.champion = champion;
           console.log(champion)
-          console.log(this.champion)
         });
       });
     }
