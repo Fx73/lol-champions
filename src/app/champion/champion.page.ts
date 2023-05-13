@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { ChampionDTO } from '../shared/DTO/championDTO';
+import { DataDragonService } from './../services/data-dragon.service';
 import { HeaderComponent } from '../shared/header/header.component';
 import { IonicModule } from '@ionic/angular';
+import { WikiaService } from './../services/wikia.service';
 
 @Component({
   selector: 'app-champion',
@@ -13,14 +16,30 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ChampionPage implements OnInit {
   championName: string | null = null;
+  champion!: ChampionDTO;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private dataDragonService: DataDragonService, private wikiaService: WikiaService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.championName = params.get('id');
-      // Faites ce que vous voulez avec championId, par exemple, effectuez une requête API pour obtenir les détails du champion correspondant
+      this.loadChampionDetails();
     });
   }
 
+  loadChampionDetails() {
+    if (this.championName) {
+      this.dataDragonService.getVersion().subscribe(version => {
+        this.dataDragonService.getChampionDetailByName(version, this.championName!).subscribe(champion => {
+          this.champion = champion;
+          console.log(champion)
+          console.log(this.champion)
+        });
+      });
+    }
+  }
+
+  getSplash(): string {
+    return this.dataDragonService.getChampionSplashUrl(this.champion.name)
+  }
 }

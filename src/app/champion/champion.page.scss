@@ -1,0 +1,15 @@
+.splash-container {
+  width: 100%; /* Ajustez la largeur selon vos besoins */
+  height: 24vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-container ion-img {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+}

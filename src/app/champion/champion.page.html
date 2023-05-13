@@ -1,3 +1,58 @@
 <app-header [title]="championName!"></app-header>
 
-<ion-content [fullscreen]="true"></ion-content>
+<ion-content [fullscreen]="true">
+	<div class="splash-container">
+		<ion-img [src]="getSplash()"
+			[alt]="champion.name"></ion-img>
+	</div>
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>{{ champion.name }}</ion-card-title>
+			<ion-card-subtitle>
+				{{ champion.title }}
+			</ion-card-subtitle>
+		</ion-card-header>
+		<ion-card-content>
+			<ion-img [src]="getSplash()"
+				[alt]="champion.name"></ion-img>
+			<p>{{ champion.lore }}</p>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header>
+			<ion-card-title>Stats</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			<ion-list>
+				<ion-item>
+					<ion-label>Attack</ion-label>
+					<ion-note slot="end">
+						{{ champion.info.attack }}
+					</ion-note>
+				</ion-item>
+				<ion-item>
+					<ion-label>Defense</ion-label>
+					<ion-note slot="end">
+						{{ champion.info.defense }}
+					</ion-note>
+				</ion-item>
+				<ion-item>
+					<ion-label>Magic</ion-label>
+					<ion-note slot="end">
+						{{ champion.info.magic }}
+					</ion-note>
+				</ion-item>
+				<ion-item>
+					<ion-label>Difficulty</ion-label>
+					<ion-note slot="end">
+						{{ champion.info.difficulty }}
+					</ion-note>
+				</ion-item>
+			</ion-list>
+		</ion-card-content>
+	</ion-card>
+
+	<!-- Ajoutez ici d'autres informations et statistiques spécifiques au champion -->
+
+</ion-content>

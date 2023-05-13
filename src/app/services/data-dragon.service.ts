@@ -40,12 +40,16 @@ export class DataDragonService {
   }
 
   // Obtient les détails d'un champion spécifique à partir du Data Dragon
-  public getChampionDetails(version: string, championId: string): Observable<any> {
+  public getChampionDetailByName(version: string, championId: string): Observable<any> {
     const url = `${this.baseUrl}/${version}/${this.extendUrl}/champion/${championId}.json`;
     return this.http.get<any>(url).pipe(
       map(data => data.data[championId])
     );
   }
 
+  public getChampionSplashUrl(championId: string) {
+    return `${this.baseUrl}/img/champion/splash/${championId}_0.jpg`
+
+  }
 
 }
