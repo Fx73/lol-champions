@@ -6,7 +6,24 @@
   align-items: center;
 }
 
-.logoImg{
-  margin: 2vh;
-  cursor: pointer;
+.logo-item{
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-left: 6px;
+  margin-right: 6px;
+  --inner-padding-bottom:0;
+  --inner-padding-end:0;
+  --inner-padding-start:0;
+  --inner-padding-top:0;
+  --padding-bottom:0;
+  --padding-start: 0;
+  --padding-top : 0;
+  --padding-end	:0;
+
+  ion-img{
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    margin: 0;
+  }
 }

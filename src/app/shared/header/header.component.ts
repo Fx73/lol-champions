@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,9 +16,12 @@ export class HeaderComponent implements OnInit {
   @Input()
   title: string = "Welcome";
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() { }
 
-
+  goHome() {
+    console.log("OK");
+    this.router.navigateByUrl('/home');
+  }
 }

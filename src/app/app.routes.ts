@@ -1,4 +1,3 @@
-import { ChampionPage } from './champion/champion.page';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [

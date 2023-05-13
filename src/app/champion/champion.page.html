@@ -1,8 +1,9 @@
 <app-header [title]="championName!"></app-header>
 
-<ion-content [fullscreen]="true">
+<ion-content *ngIf="champion !== null"
+	[fullscreen]="true">
 	<div class="splash-container">
-		<ion-img [src]="getSplash()"
+		<ion-img [src]="championSplash"
 			[alt]="champion.name"></ion-img>
 	</div>
 	<ion-card>
@@ -13,7 +14,7 @@
 			</ion-card-subtitle>
 		</ion-card-header>
 		<ion-card-content>
-			<ion-img [src]="getSplash()"
+			<ion-img [src]="championSplash"
 				[alt]="champion.name"></ion-img>
 			<p>{{ champion.lore }}</p>
 		</ion-card-content>

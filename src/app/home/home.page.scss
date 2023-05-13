@@ -32,8 +32,3 @@ ion-item {
   border-radius: 6px;
   font-size: x-large;
 }
-
-ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
-  --color: var(--ion-color-primary);
-}
