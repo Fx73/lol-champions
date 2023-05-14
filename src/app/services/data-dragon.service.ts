@@ -49,7 +49,9 @@ export class DataDragonService {
 
   public getChampionSplashUrl(championId: string) {
     return `${this.baseUrl}/img/champion/splash/${championId}_0.jpg`
-
   }
 
+  public getChampionLoadingUrl(championId: string) {
+    return `${this.baseUrl}/img/champion/loading/${championId}_0.jpg`
+  }
 }

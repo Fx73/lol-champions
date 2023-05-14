@@ -1,6 +1,7 @@
+import { Component, OnInit } from '@angular/core';
+
 import { ChampionPreviewDTO } from '../shared/DTO/champion-preview.DTO';
 import { ChampionsData } from '../shared/DTO/champions-data';
-import { Component } from '@angular/core';
 import { DataDragonService } from '../services/data-dragon.service';
 import { HeaderComponent } from "../shared/header/header.component";
 import { IonicModule } from '@ionic/angular';
@@ -14,7 +15,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [IonicModule, HeaderComponent, RouterLink, NgFor]
 })
-export class HomePage {
+export class HomePage implements OnInit {
   public get championPreviews(): ChampionPreviewDTO[] {
     return ChampionsData.championPreviews;
   }
@@ -23,6 +24,10 @@ export class HomePage {
   }
 
   constructor(private dataDragonService: DataDragonService) { }
+
+  ngOnInit(): void {
+    this.UpdateData()
+  }
 
   UpdateData() {
     this.dataDragonService.getVersion().subscribe(version => {

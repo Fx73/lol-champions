@@ -6,54 +6,210 @@
 		<ion-img [src]="championSplash"
 			[alt]="champion.name"></ion-img>
 	</div>
-	<ion-card>
-		<ion-card-header>
-			<ion-card-title>{{ champion.name }}</ion-card-title>
-			<ion-card-subtitle>
-				{{ champion.title }}
-			</ion-card-subtitle>
-		</ion-card-header>
-		<ion-card-content>
-			<ion-img [src]="championSplash"
-				[alt]="champion.name"></ion-img>
-			<p>{{ champion.lore }}</p>
-		</ion-card-content>
-	</ion-card>
+	<ion-grid>
+		<ion-row>
+			<ion-col size="8">
+				<ion-card>
+					<ion-card-header>
+						<ion-card-title>Lore</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<p>{{ champion.lore }}</p>
+					</ion-card-content>
+				</ion-card>
+				<ion-card>
+					<ion-card-header>
+						<ion-card-title>Tips</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<ion-card-subtitle>Tips alliés</ion-card-subtitle>
+						<p *ngFor="let item of champion.allytips">{{ item }}</p>
+						<ion-card-subtitle>Tips ennemies</ion-card-subtitle>
+						<p *ngFor="let item of champion.enemytips">{{ item }}</p>
+					</ion-card-content>
+				</ion-card>
+				<ion-card>
+					<ion-card-header>
+						<ion-card-title>Statistiques</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<ion-grid>
+							<ion-row>
+								<ion-col size="6">
+									<ion-label>HP:</ion-label>
+									<ion-label>
+										{{ champion.stats.hp }}
+									</ion-label>
+									<ion-label>
+										| HP Per Level: {{ champion.stats.hpperlevel }}
+									</ion-label>
+								</ion-col>
+								<ion-col size="6">
+									<ion-label>
+										Attack Damage: {{ champion.stats.attackdamage }}
+									</ion-label>
+									<ion-label>
+										| Attack Damage Per Level: {{ champion.stats.attackdamageperlevel }}
+									</ion-label>
+								</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6">
+									<ion-label>
+										HP Regen: {{ champion.stats.hpregen }}
+									</ion-label>
+									<ion-label>
+										| HP Regen Per Level: {{ champion.stats.hpregenperlevel }}
+									</ion-label>
+								</ion-col>
+								<ion-col size="6">
+									<ion-label>
+										Attack Speed: {{ champion.stats.attackspeed }}
+									</ion-label>
+									<ion-label>
+										| Attack Speed Per Level: {{ champion.stats.attackspeedperlevel }}
+									</ion-label>
+								</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6">
+									<ion-label>
+										Armor: {{ champion.stats.armor }}
+									</ion-label>
+									<ion-label>
+										| Armor Per Level: {{ champion.stats.armorperlevel }}
+									</ion-label>
+								</ion-col>
+								<ion-col size="6">
+									<ion-label>
+										Attack Range: {{ champion.stats.attackrange }}
+									</ion-label>
+								</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6">
+									<ion-label>
+										Spellblock: {{ champion.stats.spellblock }}
+									</ion-label>
+									<ion-label>
+										| Spellblock Per Level: {{ champion.stats.spellblockperlevel }}
+									</ion-label>
+								</ion-col>
+								<ion-col size="6">
+									<ion-label>
+										Movespeed: {{ champion.stats.movespeed }}
+									</ion-label>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</ion-card-content>
+				</ion-card>
+				<ion-card>
+					<ion-card-header>
+						<ion-card-title>
+							{{ champion.passive.name }}
+						</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<ion-grid>
+							<ion-row>
+								<ion-col size="2">
+									<ion-thumbnail>
+										<ion-img [src]></ion-img>
+									</ion-thumbnail>
+								</ion-col>
+								<ion-col size="10">
+									<ion-text>
+										{{ champion.passive.description }}
+									</ion-text>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</ion-card-content>
+				</ion-card>
+				<ion-card *ngFor="let spell of champion.spells">
+					<ion-card-header>
+						<ion-card-title>{{ spell.name }}</ion-card-title>
+					</ion-card-header>
+					<ion-card-content>
+						<ion-grid>
+							<ion-row>
+								<ion-col size="2">
+									<ion-thumbnail>
+										<ion-img [src]></ion-img>
+									</ion-thumbnail>
+								</ion-col>
+								<ion-col size="10">
+									<ion-label>
+										{{ spell.description }}
+									</ion-label>
+									<ion-label>
+										Cooldown: {{ spell.cooldownBurn }}
+									</ion-label>
+									<ion-label>
+										Cost: {{ spell.costBurn }}
+									</ion-label>
+									<ion-label>
+										Range: {{ spell.rangeBurn }}
+									</ion-label>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
 
-	<ion-card>
-		<ion-card-header>
-			<ion-card-title>Stats</ion-card-title>
-		</ion-card-header>
-		<ion-card-content>
-			<ion-list>
-				<ion-item>
-					<ion-label>Attack</ion-label>
-					<ion-note slot="end">
-						{{ champion.info.attack }}
-					</ion-note>
-				</ion-item>
-				<ion-item>
-					<ion-label>Defense</ion-label>
-					<ion-note slot="end">
-						{{ champion.info.defense }}
-					</ion-note>
-				</ion-item>
-				<ion-item>
-					<ion-label>Magic</ion-label>
-					<ion-note slot="end">
-						{{ champion.info.magic }}
-					</ion-note>
-				</ion-item>
-				<ion-item>
-					<ion-label>Difficulty</ion-label>
-					<ion-note slot="end">
-						{{ champion.info.difficulty }}
-					</ion-note>
-				</ion-item>
-			</ion-list>
-		</ion-card-content>
-	</ion-card>
-
+			<ion-col size="4">
+				<ion-card class="infobox">
+					<ion-card-header>
+						<ion-card-title>{{ champion.name }}</ion-card-title>
+						<ion-card-subtitle>
+							{{ champion.title }}
+						</ion-card-subtitle>
+					</ion-card-header>
+					<ion-card-content>
+						<ion-img [src]="championLoading"
+							[alt]="champion.name"></ion-img>
+						<ion-list>
+							<ion-item>
+								<ion-label>Role</ion-label>
+								<ion-note *ngFor="let item of champion.tags"
+									slot="end">
+									{{ item }}
+								</ion-note>
+							</ion-item>
+							<ion-item>
+								<ion-label>Ressource</ion-label>
+								<ion-note slot="end">
+									{{ champion.partype }}
+								</ion-note>
+							</ion-item>
+							<ion-item>
+								<ion-note slot="start">Attack</ion-note>
+								<ion-progress-bar [value]="champion.info.attack / 10"
+									slot="end"></ion-progress-bar>
+							</ion-item>
+							<ion-item>
+								<ion-note slot="start">Defense</ion-note>
+								<ion-progress-bar [value]="champion.info.defense / 10"
+									slot="end"></ion-progress-bar>
+							</ion-item>
+							<ion-item>
+								<ion-note slot="start">Magic</ion-note>
+								<ion-progress-bar [value]="champion.info.magic / 10"
+									slot="end"></ion-progress-bar>
+							</ion-item>
+							<ion-item>
+								<ion-note slot="start">Difficulty</ion-note>
+								<ion-progress-bar [value]="champion.info.difficulty / 10"
+									slot="end"></ion-progress-bar>
+							</ion-item>
+						</ion-list>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 	<!-- Ajoutez ici d'autres informations et statistiques spécifiques au champion -->
 
 </ion-content>

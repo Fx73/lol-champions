@@ -1,33 +1,16 @@
 <app-header title="LOL Champions"></app-header>
 <ion-content>
-	<ion-card class="home-content">
-		<ion-card-header>
-			<ion-card-title>
-				Bienvenue sur la page d'accueil
-			</ion-card-title>
-		</ion-card-header>
-		<ion-button (click)="UpdateData()"
-			expand="block">
-			Rafraîchir
+	<!-- ion-card class="home-content"></ion-card -->
+	<ion-card class="champion-list">
+		<ion-button *ngFor="let c of championPreviews;"
+			[routerLink]="['/champion', c.fullname]"
+			routerDirection="root"
+			lines="none"
+			detail="false"
+			class="champion-item">
+			<ion-thumbnail>
+				<ion-img [src]="c.iconPath"></ion-img>
+			</ion-thumbnail>
 		</ion-button>
 	</ion-card>
-	<ion-list id="champion-list">
-		<ion-list-header>Champions</ion-list-header>
-		<ion-grid>
-			<ion-row>
-				<ion-col *ngFor="let c of championPreviews; let i = index"
-					size="4">
-					<ion-item [routerLink]="['/champion', c.fullname]"
-						routerDirection="root"
-						lines="none"
-						detail="false">
-						<ion-label>{{ c.fullname }}</ion-label>
-						<ion-thumbnail slot="end">
-							<ion-img [src]="c.iconPath"></ion-img>
-						</ion-thumbnail>
-					</ion-item>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-	</ion-list>
 </ion-content>

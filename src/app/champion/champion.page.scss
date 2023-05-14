@@ -13,3 +13,37 @@
   width: 100%;
   height: auto;
 }
+
+ion-grid{
+  margin:0;
+  padding: 0;
+}
+ion-row{
+  margin: 0;
+  padding: 0;
+}
+ion-col{
+  margin: 0;
+  padding: 0;
+}
+
+ion-card{
+  margin: 1px;
+}
+ion-card-title{
+  font-size: xx-large;
+}
+ion-card-subtitle{
+  font-size: x-large;
+  color: lightgrey;
+}
+
+ion-progress-bar {
+  width: 32px;
+  height: 8px;
+}
+
+.infobox {
+  margin-left: 0;
+}
+

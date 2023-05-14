@@ -10,14 +10,13 @@ ion-content {
   margin: 4px;
 }
 
-#champion-list{
+.champion-list{
   margin: 4px;
-}
-
-ion-col{
-  padding-left: 4vw;
-  padding-right: 8vw;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
 
 ion-list-header {
@@ -25,10 +24,31 @@ ion-list-header {
   align-items: center;
 }
 
-ion-item {
-  margin: 2px;
-  --padding-start: 10px;
-  --padding-end: 10px;
-  border-radius: 6px;
+ion-col{
+  display: table;
+}
+
+.champion-item {
+  padding: 1px;
+  border-radius: 8px;
   font-size: x-large;
+  width: 56px;
+  height: 56px;
+  --border-color:transparent;
+  ion-thumbnail {
+    width: 56px;
+    height: 56px;
+    }
+
+  ion-img{
+    width: 56px;
+    height: 56px;
+  }
+
+  @media (max-width: 600px) {
+    ion-label {
+      display: none;
+    }
+  }
+
 }
